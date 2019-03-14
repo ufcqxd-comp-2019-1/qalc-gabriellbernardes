@@ -1,8 +1,8 @@
 package br.ufc.comp.qalc.frontend.token;
 
-public class AtribToken  extends Token {
-    public AtribToken(long line, long start) {
-        super(line, start, "=");
+public class RparenToken  extends Token {
+    public RparenToken(long line, long start) {
+        super(line, start, ")");
     }
 
     public String getFunctionIdentifier() {
@@ -14,6 +14,7 @@ public class AtribToken  extends Token {
 
     @Override
     public String getTokenIdentifier() {
-        return "ATRIB";
+        return "RPAREN";
     }
 }
+
