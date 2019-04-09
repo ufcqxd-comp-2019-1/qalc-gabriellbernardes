@@ -1,15 +1,12 @@
 package br.ufc.comp.qalc.frontend.token;
 
 public class SemmiToken extends Token {
-    public SemmiToken(long line, long start) {
-        super(line, start, ";");
+    public SemmiToken(long line, long start, String value) throws IllegalArgumentException {
+
+        super(line, start, value);
     }
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
 
-        return stringValue;
-    }
 
 
     @Override

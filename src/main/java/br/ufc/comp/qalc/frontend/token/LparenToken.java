@@ -1,15 +1,11 @@
 package br.ufc.comp.qalc.frontend.token;
 
 public class LparenToken  extends Token {
-    public LparenToken(long line, long start) {
-        super(line, start, "(");
+    public LparenToken(long line, long start, String value) throws IllegalArgumentException {
+
+        super(line, start, value);
     }
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
-
-        return stringValue;
-    }
 
 
     @Override

@@ -2,19 +2,17 @@ package br.ufc.comp.qalc.frontend.token;
 
 public class ModToken extends Token {
 
-    public ModToken(long line, long start) {
-        super(line, start, "%");
-    }
+    public ModToken(long line, long start, String value) throws IllegalArgumentException {
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
-
-        return stringValue;
+        super(line, start, value);
     }
 
 
     @Override
     public String getTokenIdentifier() {
+
         return "MOD";
+
     }
+
 }

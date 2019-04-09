@@ -1,14 +1,14 @@
 package br.ufc.comp.qalc;
 
+import br.ufc.comp.qalc.frontend.*;
+import br.ufc.comp.qalc.frontend.token.*;
 import br.ufc.comp.qalc.report.MessageCenter;
 import br.ufc.comp.qalc.report.TokensReporter;
 import br.ufc.comp.qalc.report.messages.MessageCategory;
+import br.ufc.comp.qalc.report.messages.NewTokenMessage;
 import picocli.CommandLine;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Classe principal do interpretador.
@@ -103,7 +103,7 @@ public class QALC {
             } else {
                 // Alterar esta porção do código
                 // ---->
-
+                InputStream inputToStream = qalc.readFrom == null ? System.in : new FileInputStream(qalc.readFrom);
                 OutputStream outputToStream = qalc.outputTo == null ? System.out : new FileOutputStream(qalc.outputTo);
 
                 // WARNING: Apenas a última fase deve gerar saída.
@@ -113,6 +113,21 @@ public class QALC {
                                 MessageCategory.SCANNING,
                                 new TokensReporter(outputToStream, qalc.outputVerbosity)
                         );
+                        Scanner scan = new Scanner(new Source(inputToStream));
+                        NewTokenMessage m;
+                        while(true){
+                            m=new NewTokenMessage(scan.getNextToken());
+                            if(m.getToken() instanceof EOFToken){
+
+                                break;
+                            }
+                            if(m.getToken() instanceof WhiteToken || m.getToken() instanceof ComToken || m.getToken() instanceof LineBreak) {
+                                continue;
+                            }else {
+                                MessageCenter.deliver(m);
+                            }
+
+                        }
                         break;
                     case PARSER:
                         // TODO

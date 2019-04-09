@@ -1,19 +1,18 @@
 package br.ufc.comp.qalc.frontend.token;
 
 public class PlusToken extends Token {
-    public PlusToken(long line, long start) {
-        super(line, start, "+");
+
+    public PlusToken(long line, long start, String value) throws IllegalArgumentException {
+
+        super(line, start, value);
     }
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
 
-        return stringValue;
-
-    }
-
+    @Override
     public String getTokenIdentifier() {
-        return "PLUS";
-    }
-}
 
+        return "PLUS";
+
+    }
+
+}

@@ -1,15 +1,11 @@
 package br.ufc.comp.qalc.frontend.token;
 
 public class CommaToken extends Token {
-    public CommaToken(long line, long start) {
-        super(line, start, ",");
+    public CommaToken(long line, long start, String value) throws IllegalArgumentException {
+
+        super(line, start, value);
     }
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
-
-        return stringValue;
-    }
 
 
     @Override

@@ -2,20 +2,17 @@ package br.ufc.comp.qalc.frontend.token;
 
 public class TimesToken extends Token {
 
-    public TimesToken(long line, long start) {
-        super(line, start, "*");
-    }
+    public TimesToken(long line, long start, String value) throws IllegalArgumentException {
 
-    public String getFunctionIdentifier() {
-        interpretAttributes();
-
-        return stringValue;
+        super(line, start, value);
     }
 
 
     @Override
     public String getTokenIdentifier() {
-        return "TIMES";
-    }
-}
 
+        return "TIMES";
+
+    }
+
+}
